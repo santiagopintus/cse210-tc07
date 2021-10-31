@@ -32,10 +32,10 @@ class InputService:
         event = self._screen.get_event()
         if not event is None:
             event = event.key_code
-            # ESC key:
-            if event == 27:
+            # ESC key (changed 27 to -1):
+            if event == -1:
                 sys.exit()
-            # Enter key:
+            # Enter key (On my keyboard it's 13):
             elif event == 13: 
                 result = "*"
             # Alphabethical keys:

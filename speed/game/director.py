@@ -61,7 +61,7 @@ class Director:
     def _get_inputs(self):
         user_input = self.input_service.get_letter()
         if user_input == "*":
-            self.cleaner.clear_buffer()
+            self.judge.clear_current_word()
             return ''
         else:
             return user_input

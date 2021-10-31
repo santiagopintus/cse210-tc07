@@ -11,7 +11,6 @@ class Word:
 
     Attributes:
         _x (integer): The horizontal distance.
-        _y (Point): The vertical distance.
     """
     
     def __init__(self, text):
@@ -22,12 +21,13 @@ class Word:
         """
         self._text = text
         self._x = random.randint(0, constants.MAX_X)
+        self._direction = "for"
 
     def increment_x(self):
         """Gets a new point that is the sum of this and 1.
 
         Args:
-            self (Point): An instance of Point.
+            self (Word): An instance of Word.
 
         Returns:
             Point: A new Point that is the sum.
@@ -35,11 +35,11 @@ class Word:
         self._x += 1
         return self._x
 
-    def decrement(self):
+    def decrement_x(self):
         """Gets a new point that is the subtraction of this and 1.
 
         Args:
-            self (Point): An instance of Point.
+            self (Word): An instance of Word.
 
         Returns:
             Point: A new Point that is the subtraction.
@@ -52,7 +52,7 @@ class Word:
         """Gets the horizontal distance.
         
         Args:
-            self (Point): An instance of Point.
+            self (Word): An instance of Word.
             
         Returns:
             integer: The horizontal distance.
@@ -63,7 +63,7 @@ class Word:
         """Gets the vertical distance.
         
         Args:
-            self (Point): An instance of Point.
+            self (Word): An instance of Word.
             
         Returns:
             integer: The vertical distance.
@@ -74,22 +74,32 @@ class Word:
         """Gets the text.
         
         Args:
-            self (Point): An instance of Point.
+            self (Word): An instance of Word.
             
         Returns:
             string: The text.
         """
         return self._text
 
-    # def reverse(self):
-    #     """Gets a new Point that is the reverse of this one.
+    def invert_direction(self):
+        """Inverts the direction.
         
-    #     Args:
-    #         self (Point): An instance of Point.
+        Args:
+            self (Word): An instance of Word.
             
-    #     Returns:
-    #         Point: A new Point that is reversed.
-    #     """
-    #     x = self._x * -1
-    #     y = self._y * -1
-    #     return Word(x, y)
+        """
+        if self._direction == "for":
+            self._direction = "back"
+        else:
+            self._direction = "for"
+
+    def get_direction(self):
+        """Gets the direction.
+        
+        Args:
+            self (Word): An instance of Word.
+            
+        Returns:
+            string: The direction.
+        """
+        return self._direction

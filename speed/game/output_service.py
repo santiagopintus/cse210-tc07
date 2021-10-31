@@ -91,7 +91,7 @@ class OutputService:
         Args:
             self (OutputService): An instance of OutputService.
         """
-        y = 0
+        y = 2
         for word in self.__instances_words:
             self.draw_word(word, y)
             y += 2
@@ -103,10 +103,22 @@ class OutputService:
             self (OutputService): An instance of OutputService.
             word (word): The word to render.
         """ 
+        direction = word.get_direction()
         x = word.get_x()
         text = word.get_text()
+
+        if direction == "for" and x >= constants.MAX_X:
+            word.invert_direction()
+
+        if direction == "back" and x <= 0:
+            word.invert_direction()
+
+        if direction == "for":
+            word.increment_x()
+        else:
+            word.decrement_x()
+
         self.__screen.print_at(text, x, y, 7) # WHITE
-        word.increment_x()
 
     def remove_word(self, word_guessed):
         """Removes the given word from the screen.
@@ -117,5 +129,6 @@ class OutputService:
         """
         for word in self.__instances_words:
             if word.get_text() == word_guessed:
+                print(word)
                 self.__instances_words.remove(word)
                 break
