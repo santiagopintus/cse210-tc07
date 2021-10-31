@@ -73,7 +73,6 @@ class Director:
         if word_guessed:
             self.judge.clear_current_word()
             self.output_service.remove_word(word_guessed)
-            self.output_service.create_word_instances()
             self.counter.increment()
             self.current_word = None
         else:

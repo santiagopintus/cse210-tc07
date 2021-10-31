@@ -129,6 +129,5 @@ class OutputService:
         """
         for word in self.__instances_words:
             if word.get_text() == word_guessed:
-                print(word)
                 self.__instances_words.remove(word)
                 break
