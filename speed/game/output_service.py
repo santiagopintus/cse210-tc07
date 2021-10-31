@@ -80,6 +80,7 @@ class OutputService:
         Args:
             self (OutputService): An instance of OutputService.
         """
+        self.__instances_words.clear()
         for word in self.__current_words:
             word = Word(word)
             self.__instances_words.append(word)
@@ -106,3 +107,15 @@ class OutputService:
         text = word.get_text()
         self.__screen.print_at(text, x, y, 7) # WHITE
         word.increment_x()
+
+    def remove_word(self, word_guessed):
+        """Removes the given word from the screen.
+
+        Args:
+            self (OutputService): An instance of OutputService.
+            word_guessed (word): The word to remove.
+        """
+        for word in self.__instances_words:
+            if word.get_text() == word_guessed:
+                self.__instances_words.remove(word)
+                break
