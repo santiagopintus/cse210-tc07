@@ -29,12 +29,17 @@ class InputService:
             string: The letter that was typed.
         """
         result = ""
-        event = self._screen.get_key()
+        event = self._screen.get_event()
         if not event is None:
+            event = event.key_code
+            print("The event is", event)
+            # ESC key:
             if event == 27:
                 sys.exit()
+            # Enter key:
             elif event == 10: 
                 result = "*"
+            # Alphabethical keys:
             elif event >= 97 and event <= 122: 
                 result = chr(event)
         return result

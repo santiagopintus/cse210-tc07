@@ -4,5 +4,11 @@ class Cleaner:
         """The cleaner class is used to clean the player's buffer
         
         """
-        self.__cleaner = None
+        self.cleaner = None
+
+    def clean_buffer(self):
+        """This function is used to clean the player's buffer
+        
+        """
+        print("Cleaning buffer...")
         
